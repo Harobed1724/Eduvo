@@ -1,1 +1,1 @@
-export const API_URL = "https://eduvo-backend.onrender.com";
+export const API_URL = "https://eduvoghana.onrender.com";
