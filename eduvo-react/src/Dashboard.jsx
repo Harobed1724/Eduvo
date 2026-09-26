@@ -14,7 +14,7 @@ function Dashboard({ token, ward, onLogout }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/dashboard", {
+    fetch(`${API_URL}/api/dashboard`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -134,7 +134,7 @@ function ChatPanel({ token }) {
   const [draft, setDraft] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/chat", {
+    fetch(`${API_URL}/api/chat`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())

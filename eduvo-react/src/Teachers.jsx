@@ -1,3 +1,4 @@
+import { API_URL } from "./config";
 const teachers = [
   {
     photo: "/images/teachers/Abena.jpg",

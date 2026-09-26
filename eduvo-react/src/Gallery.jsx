@@ -1,3 +1,4 @@
+import { API_URL } from "./config";
 const photos = [
   {
     src: "/images/gallery/bubbles.jpg",

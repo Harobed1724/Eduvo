@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "./config";
 
 function Classes() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/classes")
+    fetch(API_URL + "/api/classes")
       .then((res) => res.json())
       .then((result) => {
         if (result.success) setClasses(result.data);
