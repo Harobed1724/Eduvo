@@ -1,22 +1,40 @@
-import { useState, useEffect } from "react";
+const pillars = [
+  {
+    icon: "🏆",
+    title: "Mission",
+    text: "To give every child in Accra a joyful, play-based start to their education — one where curiosity is nurtured, not rushed.",
+  },
+  {
+    icon: "👁️",
+    title: "Vision",
+    text: "A generation of confident learners who see school as a place of discovery, not just instruction.",
+  },
+  {
+    icon: "📜",
+    title: "History",
+    text: "Founded in 2014 in a single rented classroom, Eduvo has grown into a full early-years campus serving 320 families.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Ama O., parent since 2023",
+    quote:
+      "My daughter used to be shy about speaking up. Six months at Eduvo and she narrates her whole day to us at dinner.",
+  },
+  {
+    name: "Kwabena T., parent since 2022",
+    quote:
+      "The teachers actually know each child individually. That kind of attention is hard to find.",
+  },
+  {
+    name: "Efua B., parent since 2024",
+    quote:
+      "We noticed smaller classes and calmer mornings right away. Best decision we made.",
+  },
+];
 
 function About() {
-  const [pillars, setPillars] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("http://localhost:4000/api/about")
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.success) {
-          setPillars(result.data.pillars);
-          setTestimonials(result.data.testimonials);
-        }
-        setLoading(false);
-      });
-  }, []);
-
   return (
     <>
       <section className="page-title-banner">
@@ -37,18 +55,25 @@ function About() {
                 children learn best through play, story, and hands-on discovery
                 — not rote memorization.
               </p>
-              <a href="#" className="btn btn-dark">
-                Learn More
-              </a>
             </div>
             <div className="row-media">
-              <div className="media-box">📚</div>
+              <div className="media-box">
+                <img
+                  src="/images/About/children.jpg"
+                  alt="Children gathered for building time"
+                />
+              </div>
             </div>
           </div>
 
           <div className="row-block">
             <div className="row-media">
-              <div className="media-box">🧩</div>
+              <div className="media-box">
+                <img
+                  src="/images/About/Boy.jpg"
+                  alt="Child building with blocks"
+                />
+              </div>
             </div>
             <div className="row-text">
               <h2>A curriculum built for how children actually learn</h2>
@@ -57,9 +82,6 @@ function About() {
                 delivered through songs, stories, and guided play rather than
                 worksheets alone.
               </p>
-              <a href="#" className="btn btn-dark">
-                Learn More
-              </a>
             </div>
           </div>
         </div>
@@ -69,19 +91,15 @@ function About() {
         <div className="container">
           <p className="eyebrow eyebrow--center">What Drives Us</p>
           <h2 className="section-title">Mission, vision &amp; history</h2>
-          {loading ? (
-            <p style={{ textAlign: "center" }}>Loading…</p>
-          ) : (
-            <div className="pillars-grid">
-              {pillars.map((item) => (
-                <div className="pillar-card" key={item.title}>
-                  <div className="pillar-icon">{item.icon}</div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="pillars-grid">
+            {pillars.map((item) => (
+              <div className="pillar-card" key={item.title}>
+                <div className="pillar-icon">{item.icon}</div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -89,18 +107,14 @@ function About() {
         <div className="container">
           <p className="eyebrow eyebrow--center">Parent Voices</p>
           <h2 className="section-title">What families in Accra are saying</h2>
-          {loading ? (
-            <p style={{ textAlign: "center", color: "white" }}>Loading…</p>
-          ) : (
-            <div className="testimonials-grid">
-              {testimonials.map((t) => (
-                <blockquote className="testimonial-card" key={t.name}>
-                  <p>"{t.quote}"</p>
-                  <footer>— {t.name}</footer>
-                </blockquote>
-              ))}
-            </div>
-          )}
+          <div className="testimonials-grid">
+            {testimonials.map((t) => (
+              <blockquote className="testimonial-card" key={t.name}>
+                <p>"{t.quote}"</p>
+                <footer>— {t.name}</footer>
+              </blockquote>
+            ))}
+          </div>
         </div>
       </section>
     </>
