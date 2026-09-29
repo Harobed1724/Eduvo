@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_URL } from "./config";
 
 const tabs = [
   { id: "assignments", label: "Assignments" },
@@ -147,7 +148,7 @@ function ChatPanel({ token }) {
     event.preventDefault();
     if (!draft.trim()) return;
 
-    const res = await fetch("http://localhost:4000/api/chat", {
+    const res = await fetch(`${API_URL}/api/chat`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
